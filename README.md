@@ -31,7 +31,7 @@
 - [☁️ Deployment](#️-deployment)
 - [🩺 Troubleshooting](#-troubleshooting)
 
-Full endpoint reference: **[API.md](API.md)** 📖
+Full endpoint reference: **[docs/API.md](API.md)** 📖
 
 ## ✨ Features
 
@@ -205,6 +205,6 @@ Use the same `Dockerfile` and set the variables from the configuration table. Po
 
 <div align="center">
 
-Made with ☕ and 🍃 · See **[API.md](API.md)** for every endpoint 📖
+Made with ☕ and 🍃 · See **[docs/API.md](API.md)** for every endpoint 📖
 
 </div>
