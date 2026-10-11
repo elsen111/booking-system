@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-booking-no-overlap-constraint
+      author: booking-team
+      changes:
+        - sql:
+            sql: CREATE EXTENSION IF NOT EXISTS btree_gist
+        - sql:
+            sql: >
+              ALTER TABLE bookings
+              ADD CONSTRAINT ex_bookings_no_overlap
+              EXCLUDE USING gist (
+                resource_id WITH =,
+                tstzrange(start_time, end_time) WITH &&
+              ) WHERE (status = 'CONFIRMED')
+      rollback:
+        - sql:
+            sql: ALTER TABLE bookings DROP CONSTRAINT ex_bookings_no_overlap

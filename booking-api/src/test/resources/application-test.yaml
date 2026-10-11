@@ -1,0 +1,4 @@
+app:
+  rate-limit:
+    general-per-minute: 10000
+    auth-per-minute: 10000
