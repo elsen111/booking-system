@@ -13,7 +13,7 @@
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-Swagger-85EA2D?logo=swagger&logoColor=black)
 ![JWT](https://img.shields.io/badge/Auth-JWT-000000?logo=jsonwebtokens&logoColor=white)
 
-[🚀 Quick start](#-quick-start) · [📖 API reference](API.md) · [⚙️ Configuration](#️-configuration) · [☁️ Deployment](#️-deployment)
+[🚀 Quick start](#-quick-start) · [📖 API reference](docs/API.md) · [⚙️ Configuration](#️-configuration) · [☁️ Deployment](#️-deployment)
 
 </div>
 
