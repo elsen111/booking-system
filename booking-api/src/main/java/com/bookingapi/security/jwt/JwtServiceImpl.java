@@ -2,8 +2,8 @@ package com.bookingapi.security.jwt;
 
 import com.bookingapi.config.properties.JwtProperties;
 import com.bookingapi.security.AuthenticatedUser;
-import com.bookingapi.user.domain.Role;
-import com.bookingapi.user.domain.User;
+import com.bookingapi.domain.user.entity.Role;
+import com.bookingapi.domain.user.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

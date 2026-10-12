@@ -1,9 +1,9 @@
 package com.bookingapi.config;
 
 import com.bookingapi.config.properties.AdminProperties;
-import com.bookingapi.user.domain.Role;
-import com.bookingapi.user.domain.User;
-import com.bookingapi.user.repository.UserRepository;
+import com.bookingapi.domain.user.entity.Role;
+import com.bookingapi.domain.user.entity.User;
+import com.bookingapi.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;

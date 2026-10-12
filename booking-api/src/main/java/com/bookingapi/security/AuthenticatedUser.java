@@ -1,6 +1,6 @@
 package com.bookingapi.security;
 
-import com.bookingapi.user.domain.Role;
+import com.bookingapi.domain.user.entity.Role;
 
 import java.util.UUID;
 
