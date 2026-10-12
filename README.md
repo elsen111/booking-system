@@ -13,7 +13,7 @@
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-Swagger-85EA2D?logo=swagger&logoColor=black)
 ![JWT](https://img.shields.io/badge/Auth-JWT-000000?logo=jsonwebtokens&logoColor=white)
 
-[🚀 Quick start](#quick-start) · [📖 API reference](docs/API.md) · [⚙️ Configuration](#configuration) · [☁️ Deployment](#deployment)
+[🌐 Live demo](#live-demo) · [🚀 Quick start](#quick-start) · [📖 API reference](docs/API.md) · [⚙️ Configuration](#configuration) · [☁️ Deployment](#deployment)
 
 </div>
 
@@ -21,6 +21,7 @@
 
 ## 📚 Table of contents
 
+- [🌐 Live demo](#live-demo)
 - [✨ Features](#features)
 - [🧰 Tech stack](#tech-stack)
 - [🚀 Quick start](#quick-start)
@@ -32,6 +33,21 @@
 - [🩺 Troubleshooting](#troubleshooting)
 
 Full endpoint reference: **[docs/API.md](docs/API.md)** 📖
+
+<a id="live-demo"></a>
+## 🌐 Live demo
+
+The API is deployed on Render and can be explored right away in Swagger UI:
+
+👉 **[https://booking-system-9k64.onrender.com/swagger-ui/index.html](https://booking-system-9k64.onrender.com/swagger-ui/index.html)**
+
+| 🔗 Endpoint | Description |
+|---|---|
+| [/swagger-ui/index.html](https://booking-system-9k64.onrender.com/swagger-ui/index.html) | 📘 Swagger UI (use **Authorize** with an access token) |
+| [/v3/api-docs](https://booking-system-9k64.onrender.com/v3/api-docs) | 📄 OpenAPI document |
+| [/actuator/health](https://booking-system-9k64.onrender.com/actuator/health) | 🩺 Health check |
+
+> ⏳ The demo runs on Render's free tier: after a period of inactivity the service spins down, so the **first request can take about a minute** while it wakes up.
 
 <a id="features"></a>
 ## ✨ Features
@@ -206,6 +222,8 @@ cd booking-api
 
 ### 🟣 Render
 
+🌐 **Live deployment:** [https://booking-system-9k64.onrender.com/swagger-ui/index.html](https://booking-system-9k64.onrender.com/swagger-ui/index.html)
+
 The app is in a subfolder, so the blueprint must live in the **repository root** and point at it:
 
 1. 📄 Place `render.yaml` in the repository root and add `rootDir: booking-api` to the web service:
@@ -220,10 +238,14 @@ The app is in a subfolder, so the blueprint must live in the **repository root**
 2. 📤 Push the repository to GitHub.
 3. 🧩 In Render: **New → Blueprint**, select the repository.
 4. 🔑 Provide `ADMIN_EMAIL` and `ADMIN_PASSWORD` when prompted. The database variables are wired automatically and `JWT_SECRET` is generated.
-5. 🩺 After the deploy, check `/actuator/health` and `/swagger-ui.html`.
+5. 🩺 After the deploy, check `/actuator/health` and `/swagger-ui/index.html`.
+
+🔁 **Updates:** with **Auto-Deploy** set to *On Commit*, every push or merge to the connected branch rebuilds and redeploys the service automatically. New Liquibase changesets run on startup.
 
 > ⚠️ **Free-tier notes:** free web services spin down after a period of inactivity (the first request afterwards is slow),
 > and the free database expires after 30 days. Use a paid plan for anything long-lived.
+
+> 📍 **Region:** the web service and the database must be in the **same Render region**, otherwise the internal database hostname does not resolve (`UnknownHostException`). A region can't be changed after creation, so recreate one of the two if they differ.
 
 ### 🚂 Railway or any Docker host
 
@@ -242,6 +264,8 @@ Point `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USERNAME` and `DB_PASSWORD` at your P
 | `Address already in use` on 8080 | The container and `bootRun` can't run together: `docker compose stop app` |
 | `429 Too Many Requests` | Rate limit reached; wait for the `Retry-After` seconds |
 | App refuses to start in `prod` | A required variable is missing (see the configuration table) |
+| `UnknownHostException` for the database on Render | The database and web service are in different regions: recreate one so both share a region |
+| Live demo is slow on the first request | Render's free tier spins the service down when idle; wait about a minute |
 | 404 on the API doc link | The path is case-sensitive: it must be `docs/API.md` |
 
 ---
