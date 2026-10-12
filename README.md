@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📅 Booking API
+# Booking API
 
 **Book shared resources with role-based access, rotating JWT sessions and zero double bookings.**
 
